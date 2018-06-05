@@ -1,6 +1,6 @@
-#REST
+REST
 
-##From [Understanding](https://spring.io/understanding/REST) REST:
+From [Understanding](https://spring.io/understanding/REST) REST:
 
 REST (Representational State Transfer) was introduced and defined in 2000 by Roy Fielding in his doctoral dissertation. REST is an architectural style for designing distributed systems. It is not a standard but a set of constraints, such as being stateless, having a client/server relationship, and a uniform interface.
 
@@ -62,8 +62,11 @@ Using the HTTP Accept header (or perhaps the Accept-Version header), clients can
 References
 
 https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/
+
 http://www.lexicalscope.com/blog/2012/03/12/how-are-rest-apis-versioned/
+
 http://stackoverflow.com/questions/10742594/versioning-rest-api
+
 http://stackoverflow.com/questions/389169/best-practices-for-api-versioning
 
 HTTP methods
@@ -72,15 +75,12 @@ When interacting with resources, the HTTP method describes the logical action be
 Depending on the requirements for the resource, an API should offer all or some of the following methods.
 
 GET
-
 Retrieve a resource
 
 GET /addresses/1
 GET /addresses
  
-
 POST
-
 Create a *new* resource
 
 POST /addresses
@@ -89,7 +89,6 @@ SHOULD return Location of the resource created.
 MAY return a representation of the resource created in the body.
 
 PATCH
-
 Update an existing resource, including partial updates
 
 PATCH /addresses/1
@@ -108,7 +107,6 @@ HEAD /addresses/1
 OPTIONS Check options available for a resource or server    
  
 For reference, most of the HTTP methods were originally defined in RFC2616.
-
 
 HTTP status codes
 Use the HTTP status code as an indication of the result of the HTTP request.
@@ -150,11 +148,13 @@ The request is to be processed asynchronously or later by a batch
 Redirection
 
 301 Moved Permanently   
-The requested resource has permanently moved and can be found at the new URI.
+The requested resource has permanently moved and can be found at the new URI. 
 
- 
-302 Found   The client should continue to use the effective request URI because the server may change the redirection in the future.     
-3xx     The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection.      
+302 Found   
+The client should continue to use the effective request URI because the server may change the redirection in the future.
+
+3xx 
+The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection.      
 Failure status codes
 Client error
 400 Bad Request The client has sent an invalid request that cannot or should not be processed.  Request validation fails
@@ -178,24 +178,51 @@ The target resource state is in conflict with the action requested.
 
 The server SHOULD return a payload that includes enough information for a user to recognize the source of the conflict.
 
- 
-
 Request to update a field in a way that no longer makes sense (due to a third-party update)
-410 Gone    The requested resource is not available and it is known that it never will be available.    It is past the end date of a limited time resource.
-411 Length Required The client has failed to specify the Content-Length header and the server will not accept the request without it.    
-412 Precondition Failed Conditions set by the client have not been met. Client uses If-Match header with an old ETag
-415 Unsupported Media Type  The payload sent by the client is not in a format supported by the server. Usually this is determined by Content-Type or Content-Encoding   Client sends XML but server only handles JSON
-428 Precondition Required   No condition was sent with the request but the server requires a condition such as If-Match.    Server requires a client to send an ETag in the If-Match header when updating, but it is not present.
-429 Too Many Requests   The client has sent too many requests in a given amount of time and are being denied (temporarily, usually). A Retry-After header may be included to indicate when the client can try again.    Rate limiting access to an API to prevent DoS
+
+410 Gone    
+The requested resource is not available and it is known that it never will be available.    
+It is past the end date of a limited time resource.
+
+411 Length Required
+The client has failed to specify the Content-Length header and the server will not accept the request without it.
+
+412 Precondition Failed Conditions set by the client have not been met.
+Client uses If-Match header with an old ETag
+
+415 Unsupported Media Type
+The payload sent by the client is not in a format supported by the server. 
+Usually this is determined by Content-Type or Content-Encoding   Client sends XML but server only handles JSON
+
+428 Precondition Required
+No condition was sent with the request but the server requires a condition such as If-Match.
+Server requires a client to send an ETag in the If-Match header when updating, but it is not present.
+
+429 Too Many Requests
+The client has sent too many requests in a given amount of time and are being denied (temporarily, usually). 
+A Retry-After header may be included to indicate when the client can try again.    
+Rate limiting access to an API to prevent DoS
+
 Server error
 500 Internal Server Error   
 An unexpected error occurred during processing the request and it cannot be fulfilled.
 
 Data store error
-501 Not Implemented The endpoint or requested functionality is not implemented at this time.    An endpoint is planned but not implemented yet.
-502 Bad Gateway While processing the request, an upstream service returned an error.    A dependent service returns 500.
-503 Service Unavailable The service is down. Retry again later. Typically returned by a proxy when the service is not up.
-504 Gateway Timeout An upstream service timed out while trying to complete the request. An outbound HTTP call times out.
+501 Not Implemented
+The endpoint or requested functionality is not implemented at this time. 
+An endpoint is planned but not implemented yet.
+
+502 Bad Gateway
+While processing the request, an upstream service returned an error.    
+A dependent service returns 500.
+
+503 Service Unavailable
+The service is down. Retry again later. Typically returned by a proxy when the service is not up.
+
+504 Gateway Timeout
+An upstream service timed out while trying to complete the request. An outbound HTTP call times out.
+
+
 References
 http://racksburg.com/choosing-an-http-status-code/
 
