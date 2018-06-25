@@ -1,4 +1,4 @@
-#Allowed request methods
+# Allowed request methods
 - POST
 create a resource with a new ID
 
@@ -15,7 +15,7 @@ For GET requests with timestamp, we return records where start timestamp >=today
 - DELETE
 remove a resource with existing id
 
-#Allowed response codes
+# Allowed response codes
 
 - 200 SUCCESS
 request handles successfully
